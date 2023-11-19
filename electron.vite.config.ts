@@ -2,7 +2,6 @@ import { resolve } from "path";
 import { defineConfig, externalizeDepsPlugin } from "electron-vite";
 import react from "@vitejs/plugin-react";
 import { UserConfig, UserConfigExport, mergeConfig } from "vite";
-import commonjs from "@rollup/plugin-commonjs";
 
 const commonConfig: UserConfigExport = {
   resolve: {
@@ -18,12 +17,7 @@ const createConfig = (config: UserConfig) => {
 
 export default defineConfig({
   main: createConfig({
-    plugins: [externalizeDepsPlugin()],
-    build: {
-      rollupOptions: {
-        plugins: [commonjs()]
-      }
-    }
+    plugins: [externalizeDepsPlugin()]
   }),
   preload: createConfig({
     plugins: [externalizeDepsPlugin()]
