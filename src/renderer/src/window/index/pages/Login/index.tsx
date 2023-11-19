@@ -5,11 +5,11 @@ import BaseColLayout from "@renderer/components/BaseColLayout";
 import "./style.scss";
 import { Checkbox, QRCode, Image, Form, Input, Button } from "antd";
 import { LogoImage } from "@renderer/config/images";
-import { LeftOutlined } from "@ant-design/icons";
 import { showWarningMessage } from "@renderer/utils/message";
 import { openPage } from "@renderer/utils/hepler";
 import { RouteEnum } from "@renderer/utils/enum";
 import { useNavigate } from "react-router-dom";
+import BaseFontIcon from "@renderer/components/BaseFontIcon";
 
 enum TabTypeEnum {
   QrCode = 1,
@@ -67,7 +67,11 @@ const RenderPhoneCode = (props: { setTabType: (data: TabTypeEnum) => any }) => {
   return (
     <div className="phone-code-container">
       <div className="header-container">
-        <LeftOutlined className="back-icon" onClick={() => props.setTabType(TabTypeEnum.QrCode)} />
+        <BaseFontIcon
+          name="back"
+          className="back-icon"
+          onClick={() => props.setTabType(TabTypeEnum.QrCode)}
+        ></BaseFontIcon>
         <p className="header-label">短信验证</p>
       </div>
       <Form name="basic" autoComplete="off" size="large" onFinish={onFinish}>

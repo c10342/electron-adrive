@@ -33,6 +33,9 @@ const initEvent = () => {
   });
   ipcMain.on(EventEnum.SetWinAttr, (event, options: SetWinAttrProps) => {
     const win = BrowserWindow.fromWebContents(event.sender);
+    if (!win) {
+      return;
+    }
     if (!isUndef(options.resizable)) {
       win?.setResizable(options.resizable);
     }

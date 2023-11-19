@@ -1,15 +1,15 @@
+import BaseFontIcon from "../BaseFontIcon";
 import "./style.scss";
-import { CloseOutlined, MinusOutlined } from "@ant-design/icons";
 
 const BaseWinHeader = () => {
   return (
     <div className="base-win-header">
       <div className="icon-container">
         <div className="icon-item" onClick={() => window.api.minimizeWindow()}>
-          <MinusOutlined />
+          <BaseFontIcon name="minimize"></BaseFontIcon>
         </div>
         <div className="icon-item close-icon" onClick={() => window.api.closeWindown()}>
-          <CloseOutlined />
+          <BaseFontIcon name="close"></BaseFontIcon>
         </div>
       </div>
     </div>
