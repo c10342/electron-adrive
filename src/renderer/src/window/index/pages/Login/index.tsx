@@ -58,11 +58,11 @@ const RenderPhoneCode = (props: { setTabType: (data: TabTypeEnum) => any }) => {
   };
   const onSlaClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     event.stopPropagation();
-    openPage(RouteEnum.Sla, { title: "阿里云盘服务协议" });
+    openPage("sla.html", { title: "阿里云盘服务协议" });
   };
   const onPrivacyPolicyClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     event.stopPropagation();
-    openPage(RouteEnum.PrivacyPolicy, { title: "阿里云盘隐私政策" });
+    openPage("privacyPolicy.html", { title: "阿里云盘隐私政策" });
   };
   return (
     <div className="phone-code-container">
