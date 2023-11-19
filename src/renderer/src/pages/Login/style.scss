@@ -1,0 +1,173 @@
+.home-page {
+  background-color: #ecefff;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    .login-title {
+      font-weight: bold;
+      font-size: 36px;
+      margin-top: 40px;
+    }
+    .login-container {
+      margin-top: 40px;
+      width: 80%;
+      height: 370px;
+      background-color: #fff;
+      border-radius: 8px;
+      .tabs-container {
+        height: 46px;
+        display: flex;
+        flex-direction: row;
+        .tab-item {
+          flex: 1;
+          background-color: #f5f5f6;
+          color: #aaabad;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 18px;
+          &.tab-active {
+            background-color: #fff;
+            color: var(--text-color);
+          }
+          &:nth-child(1) {
+            border-radius: 8px 0 0 0;
+          }
+          &:nth-child(2) {
+            border-radius: 0 8px 0 0;
+          }
+        }
+      }
+      .qrcode-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 30px;
+        .tip {
+          font-size: 14px;
+          color: var(--text-color);
+          margin-top: 20px;
+        }
+      }
+      .password-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 30px;
+        .ant-form {
+          width: 100%;
+        }
+       
+      }
+    }
+    .phone-code-container {
+      padding: 0 20px;
+      .header-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
+        position: relative;
+        margin-bottom: 10px;
+        .back-icon {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+        .header-label {
+          font-size: 18px;
+          color: var(--text-color);
+          cursor: default;
+        }
+      }
+      .get-code-container {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #637dff;
+        border: 1px solid rgba(99, 125, 255, 0.24);
+        border-radius: 6px;
+        padding: 2px 12px;
+        line-height: 150%;
+        font-size: 14px;
+        display: inline-block;
+        cursor: pointer;
+      }
+     .laws-container{
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      
+      .checkbox-label{
+        margin-left: 10px;
+        color: #b0b1b3;
+        font-size: 13px;
+        line-height: 20px;
+        cursor: default;
+      }
+      .link-label{
+        color: var(--main-color);
+        cursor: pointer;
+        margin: 0 5px;
+        display: inline-block;
+      }
+     }
+     
+    }
+  }
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .download-app {
+      padding: 10px;
+      background-color: var(--main-color-light-1);
+      color: var(--main-color);
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: default;
+    }
+    padding-bottom: 20px;
+  }
+
+  .register-tip {
+    color: var(--main-color);
+    font-size: 13px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+
+  .checkbox-container {
+    .ant-checkbox-inner {
+      border-radius: 50%;
+    }
+    .checkbox-label {
+      color: #b0b1b3;
+      font-size: 13px;
+    }
+  }
+
+  .other-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .code-login {
+      font-size: 12px;
+      color: #626266;
+      cursor: pointer;
+    }
+  }
+}

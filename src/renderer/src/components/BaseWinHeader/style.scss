@@ -1,0 +1,30 @@
+.base-win-header {
+  height: 34px;
+  position: relative;
+  .icon-container{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    .icon-item{
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #25262B;
+      &:hover{
+        background-color: #DBDEED;
+      }
+    }
+    .close-icon{
+      &:hover{
+        background-color: var(--danger-color);
+        color: #fff;
+      }
+    }
+  }
+}
