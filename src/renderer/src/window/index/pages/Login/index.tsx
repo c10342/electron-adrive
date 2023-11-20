@@ -6,7 +6,6 @@ import "./style.scss";
 import { Checkbox, QRCode, Image, Form, Input, Button } from "antd";
 import { LogoImage } from "@renderer/config/images";
 import { showWarningMessage } from "@renderer/utils/message";
-import { openPage } from "@renderer/utils/hepler";
 import { RouteEnum } from "@renderer/utils/enum";
 import { useNavigate } from "react-router-dom";
 import BaseFontIcon from "@renderer/components/BaseFontIcon";
@@ -58,11 +57,11 @@ const RenderPhoneCode = (props: { setTabType: (data: TabTypeEnum) => any }) => {
   };
   const onSlaClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     event.stopPropagation();
-    openPage("sla.html", { title: "阿里云盘服务协议" });
+    window.api.openWindown({ url: "sla.html", title: "阿里云盘服务协议" });
   };
   const onPrivacyPolicyClick = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     event.stopPropagation();
-    openPage("privacyPolicy.html", { title: "阿里云盘隐私政策" });
+    window.api.openWindown({ url: "privacyPolicy.html", title: "阿里云盘隐私政策" });
   };
   return (
     <div className="phone-code-container">

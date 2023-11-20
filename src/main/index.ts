@@ -1,16 +1,13 @@
 import { app, shell, BrowserWindow } from "electron";
 import { join } from "path";
-import { electronApp, optimizer, is } from "@electron-toolkit/utils";
+import { electronApp, optimizer } from "@electron-toolkit/utils";
 import icon from "../../resources/icon.png?asset";
 import initEvent from "./event";
 import { createWindow } from "./hepler";
+import initTray from "./tray";
 
 function createMainWindow(): void {
-  const url =
-    is.dev && process.env["ELECTRON_RENDERER_URL"]
-      ? process.env["ELECTRON_RENDERER_URL"]
-      : join(__dirname, "../renderer/index.html");
-  const mainWindow = createWindow(url, {
+  const mainWindow = createWindow("index.html", {
     width: 490,
     height: 680,
     show: false,
@@ -29,6 +26,7 @@ function createMainWindow(): void {
   });
 
   initEvent();
+  initTray();
 }
 
 // This method will be called when Electron has finished
