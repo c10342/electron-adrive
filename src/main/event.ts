@@ -15,6 +15,10 @@ const initEvent = () => {
     const win = BrowserWindow.fromWebContents(event.sender);
     win?.maximize();
   });
+  ipcMain.on(EventEnum.Unmaximize, (event) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    win?.unmaximize();
+  });
   ipcMain.on(EventEnum.Close, (event) => {
     const win = BrowserWindow.fromWebContents(event.sender);
     win?.close();

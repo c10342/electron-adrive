@@ -260,7 +260,7 @@ const Login = () => {
   return (
     <div className="home-page">
       <BaseColLayout
-        header={<BaseWinHeader />}
+        header={<BaseWinHeader showMaximize={false} />}
         content={<RenderContent />}
         footer={<RenderFooter />}
       />

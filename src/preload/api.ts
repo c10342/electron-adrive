@@ -1,4 +1,4 @@
-import { EventEnum } from "@share/event";
+import { EventEnum, GlobalEventEnum } from "@share/event";
 import { SetWinAttrProps } from "@share/type";
 import { ipcRenderer } from "electron";
 
@@ -21,7 +21,16 @@ export const api = {
   maximizeWindown() {
     ipcRenderer.send(EventEnum.Maximize);
   },
+  unmaximizeWindown() {
+    ipcRenderer.send(EventEnum.Unmaximize);
+  },
   setWinAttr(options: SetWinAttrProps) {
     ipcRenderer.send(EventEnum.SetWinAttr, options);
+  },
+  on(name: GlobalEventEnum, action: (data: any) => any) {
+    ipcRenderer.on(name, action);
+  },
+  off(name: GlobalEventEnum, action: (data: any) => any) {
+    ipcRenderer.removeListener(name, action);
   }
 };

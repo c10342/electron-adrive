@@ -5,5 +5,12 @@ export enum EventEnum {
   OpenUrl = "openUrl",
   OpenWindown = "openWindown",
   Maximize = "maximize",
-  SetWinAttr = "setWinAttr"
+  SetWinAttr = "setWinAttr",
+  Unmaximize = "unmaximize"
+}
+
+export enum GlobalEventEnum {
+  Maximize = "maximize",
+  Minimize = "minimize",
+  Unmaximize = "unmaximize"
 }

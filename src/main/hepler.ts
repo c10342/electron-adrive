@@ -1,4 +1,5 @@
 import { is } from "@electron-toolkit/utils";
+import { GlobalEventEnum } from "@share/event";
 import { BrowserWindow, BrowserWindowConstructorOptions } from "electron";
 import path from "path";
 
@@ -20,6 +21,15 @@ export const createWindow = (
     if (actionOptions?.autoShow !== false) {
       win.show();
     }
+  });
+  win.on("maximize", () => {
+    win.webContents.send(GlobalEventEnum.Maximize);
+  });
+  win.on("minimize", () => {
+    win.webContents.send(GlobalEventEnum.Minimize);
+  });
+  win.on("unmaximize", () => {
+    win.webContents.send(GlobalEventEnum.Unmaximize);
   });
   const formatUrl = createPageUrl(url);
   if (formatUrl.startsWith("file")) {
