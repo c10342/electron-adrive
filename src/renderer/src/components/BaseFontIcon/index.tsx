@@ -1,12 +1,16 @@
 import classNames from "classnames";
 import "./style.scss";
-import { CSSProperties } from "react";
 
-const BaseFontIcon = (props: { name: string; className?: string; style?: CSSProperties }) => {
+type MergedHTMLAttributes = React.HTMLAttributes<HTMLElement> & {
+  name: string;
+  className?: string;
+};
+
+const BaseFontIcon = (props: MergedHTMLAttributes) => {
   return (
     <span
+      {...props}
       className={classNames("iconfont base-font-icon", `icon-${props.name}`, props.className)}
-      style={props.style}
     ></span>
   );
 };
