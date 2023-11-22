@@ -5,6 +5,7 @@ import { createWindow } from "./hepler";
 import { SetWinAttrProps } from "@share/type";
 
 import { isUndef } from "@share/helper";
+import store from "./store";
 
 const initEvent = () => {
   ipcMain.on(EventEnum.Minimize, (event) => {
@@ -30,7 +31,7 @@ const initEvent = () => {
     createWindow(options.url, {
       maximizable: true,
       show: false,
-      autoHideMenuBar: true,
+      autoHideMenuBar: false,
       ...(process.platform === "linux" ? { icon } : {}),
       title: options.title
     });
@@ -49,6 +50,15 @@ const initEvent = () => {
     if (!isUndef(options.size)) {
       win?.setSize(options.size.width, options.size.height, options.size.animate);
     }
+  });
+  ipcMain.handle(EventEnum.GetStore, (_event, key: string) => {
+    return store.get(key);
+  });
+  ipcMain.on(EventEnum.SetStore, (_event, key: string, value: any) => {
+    store.set(key, value);
+  });
+  ipcMain.on(EventEnum.DeleteStore, (_event, key: string) => {
+    store.delete(key as any);
   });
 };
 

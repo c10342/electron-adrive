@@ -16,7 +16,13 @@ export const createWindow = (
   options?: BrowserWindowConstructorOptions,
   actionOptions?: { autoShow?: boolean }
 ) => {
-  const win = new BrowserWindow(options);
+  const win = new BrowserWindow({
+    webPreferences: {
+      preload: path.join(__dirname, "../preload/index.js"),
+      sandbox: false
+    },
+    ...options
+  });
   win.on("ready-to-show", () => {
     if (actionOptions?.autoShow !== false) {
       win.show();

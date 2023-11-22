@@ -27,10 +27,19 @@ export const api = {
   setWinAttr(options: SetWinAttrProps) {
     ipcRenderer.send(EventEnum.SetWinAttr, options);
   },
-  on(name: GlobalEventEnum, action: (data: any) => any) {
+  on(name: GlobalEventEnum, action: (...args: any) => any) {
     ipcRenderer.on(name, action);
   },
-  off(name: GlobalEventEnum, action: (data: any) => any) {
+  off(name: GlobalEventEnum, action: (...args: any) => any) {
     ipcRenderer.removeListener(name, action);
+  },
+  getStore(key: string) {
+    return ipcRenderer.invoke(EventEnum.GetStore, key);
+  },
+  setStore(key: string, value: any) {
+    ipcRenderer.send(EventEnum.SetStore, key, value);
+  },
+  deleteStore(key: string) {
+    return ipcRenderer.send(EventEnum.DeleteStore, key);
   }
 };

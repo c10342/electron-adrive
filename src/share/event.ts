@@ -6,11 +6,15 @@ export enum EventEnum {
   OpenWindown = "openWindown",
   Maximize = "maximize",
   SetWinAttr = "setWinAttr",
-  Unmaximize = "unmaximize"
+  Unmaximize = "unmaximize",
+  SetStore = "SetStore",
+  GetStore = "getStorre",
+  DeleteStore = "deleteStore"
 }
 
 export enum GlobalEventEnum {
   Maximize = "maximize",
   Minimize = "minimize",
-  Unmaximize = "unmaximize"
+  Unmaximize = "unmaximize",
+  StoreChange = "storeChange"
 }
