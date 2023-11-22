@@ -25,6 +25,7 @@
     "@electron-toolkit/utils": "^2.0.0",
     "antd": "^5.11.2",
     "classnames": "^2.3.2",
+    "electron-store": "^8.1.0",
     "electron-updater": "^6.1.1",
     "lodash-es": "^4.17.21",
     "react-router-dom": "^6.19.0"
