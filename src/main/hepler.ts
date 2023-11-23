@@ -45,3 +45,11 @@ export const createWindow = (
   }
   return win;
 };
+
+export const parJsonToString = (data: any) => {
+  try {
+    return JSON.stringify(data);
+  } catch (error) {
+    return "";
+  }
+};

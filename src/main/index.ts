@@ -4,7 +4,8 @@ import { electronApp, optimizer } from "@electron-toolkit/utils";
 import icon from "../../resources/icon.png?asset";
 import initEvent from "./event";
 import { createWindow } from "./hepler";
-import initTray from "./tray";
+// import initTray from "./tray";
+import { initLog } from "./log";
 
 function createMainWindow(): void {
   const mainWindow = createWindow("index.html", {
@@ -26,7 +27,8 @@ function createMainWindow(): void {
   });
 
   initEvent();
-  initTray();
+  // initTray();
+  initLog();
 }
 
 // This method will be called when Electron has finished
