@@ -1,11 +1,12 @@
 import { EventEnum } from "@share/event";
 import { BrowserWindow, ipcMain, shell } from "electron";
-import icon from "../../resources/icon.png?asset";
+
 import { createWindow } from "./hepler";
 import { SetWinAttrProps } from "@share/type";
 
 import { isUndef } from "@share/helper";
 import store from "./store";
+import { icon } from "../const";
 
 const initEvent = () => {
   ipcMain.on(EventEnum.Minimize, (event) => {

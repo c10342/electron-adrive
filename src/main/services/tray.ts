@@ -1,7 +1,7 @@
 // 系统托盘
 import { Tray } from "electron";
-import icon from "../../resources/icon.png?asset";
 import { createWindow } from "./hepler";
+import { icon } from "../const";
 
 const initTray = () => {
   const win = createWindow(

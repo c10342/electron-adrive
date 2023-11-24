@@ -1,11 +1,11 @@
 import { app, shell, BrowserWindow } from "electron";
 import { join } from "path";
 import { electronApp, optimizer } from "@electron-toolkit/utils";
-import icon from "../../resources/icon.png?asset";
-import initEvent from "./event";
-import { createWindow } from "./hepler";
+import initEvent from "./services/event";
+import { createWindow } from "./services/hepler";
 // import initTray from "./tray";
-import { initLog } from "./log";
+import { initLog } from "./services/log";
+import { icon } from "./const";
 
 function createMainWindow(): void {
   const mainWindow = createWindow("index.html", {
