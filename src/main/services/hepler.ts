@@ -7,7 +7,7 @@ const createPageUrl = (html: string) => {
   const baseUrl =
     is.dev && process.env["ELECTRON_RENDERER_URL"]
       ? process.env["ELECTRON_RENDERER_URL"]
-      : path.join(__dirname, "../renderer");
+      : path.join(__dirname, "../../renderer");
   return `${baseUrl}/${html}`;
 };
 
@@ -18,7 +18,7 @@ export const createWindow = (
 ) => {
   const win = new BrowserWindow({
     webPreferences: {
-      preload: path.join(__dirname, "../preload/index.js"),
+      preload: path.join(__dirname, "../../preload/index.js"),
       sandbox: false
     },
     ...options
