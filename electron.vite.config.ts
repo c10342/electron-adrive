@@ -25,7 +25,6 @@ const getInput = () => {
       map[name.replace(".html", "")] = resolve(dirRoot, name);
     }
   });
-  console.log(map);
 
   return map;
 };

@@ -4,8 +4,9 @@ import { electronApp, optimizer } from "@electron-toolkit/utils";
 import initEvent from "./services/event";
 import { createWindow } from "./services/hepler";
 // import initTray from "./tray";
-import { initLog } from "./services/log";
+import { initLog, logInfo } from "./services/log";
 import { icon } from "./const";
+import User from "./db/User";
 
 function createMainWindow(): void {
   const mainWindow = createWindow("index.html", {
@@ -25,10 +26,11 @@ function createMainWindow(): void {
     shell.openExternal(details.url);
     return { action: "deny" };
   });
-
+  logInfo(app.getPath("appData"));
   initEvent();
   // initTray();
   initLog();
+  User.create({ name: "张三", age: 14 });
 }
 
 // This method will be called when Electron has finished
