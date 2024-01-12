@@ -2,14 +2,14 @@ import { app, BrowserWindow } from "electron";
 import { join } from "path";
 import { electronApp, optimizer } from "@electron-toolkit/utils";
 import createWindow from "./utils/createWindow";
-import initTray from "./utils/tray";
+// import initTray from "./utils/tray";
 
 function createBrowserWindow(): void {
   createWindow("index", {
     preload: join(__dirname, "../preload/index.js"),
     autoHideMenuBar: false
   });
-  initTray();
+  // initTray();
 }
 
 app.whenReady().then(() => {
