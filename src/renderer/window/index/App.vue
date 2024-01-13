@@ -4,6 +4,11 @@
       <template #left>
         <menu-bar></menu-bar>
       </template>
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </base-row-layout>
   </base-win-bar-layout>
 </template>

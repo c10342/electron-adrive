@@ -1,44 +1,55 @@
 <template>
   <div class="menu-bar">
     <div
-      v-for="(item, index) in list"
-      :key="index"
+      v-for="menu in menus"
+      :key="menu.name"
       class="menu-item"
-      :class="{ 'menu-active': index === 0 }"
+      :class="{ 'menu-active': menu.name === routerName }"
+      @click="onClick(menu)"
     >
-      <base-font-icon :name="item.icon" :size="item.size"></base-font-icon>
-      <span class="menu-label">{{ item.label }}</span>
+      <base-font-icon :name="menu.icon" :size="24"></base-font-icon>
+      <span class="menu-label">{{ menu.label }}</span>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-const list = [
-  {
-    icon: "folder",
-    label: "文件",
-    size: 24
-  },
-  {
-    icon: "image",
-    label: "相册",
-    size: 24
-  },
-  {
-    icon: "grid",
-    label: "应用",
-    size: 24
-  },
-  {
-    icon: "transfer_vertical_line",
-    label: "传输",
-    size: 24
-  },
-  {
-    icon: "sync",
-    label: "自动同步文件夹",
-    size: 24
-  }
-];
+import { computed } from "vue";
+import { useRouter, useRoute } from "vue-router";
+
+interface MenuItem {
+  icon: string;
+  label: string;
+  sort: number;
+  name: string;
+}
+
+const router = useRouter();
+
+const route = useRoute();
+
+const routerName = computed(() => {
+  return route.name as string;
+});
+
+const menus = computed(() => {
+  const routes = router.getRoutes().filter((r) => r.meta.menu);
+  const list: MenuItem[] = routes.map((r) => {
+    const menu = r.meta.menu as any;
+    const obj: MenuItem = {
+      label: menu.label,
+      icon: menu.icon,
+      sort: menu.sort,
+      name: r.name as string
+    };
+    return obj;
+  });
+
+  return list.sort((a, b) => b.sort - a.sort);
+});
+
+const onClick = (menu: MenuItem) => {
+  router.push({ name: menu.name });
+};
 </script>
 
 <style lang="scss">

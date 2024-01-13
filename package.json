@@ -25,7 +25,8 @@
     "@electron-toolkit/utils": "^2.0.0",
     "ant-design-vue": "^4.1.0",
     "electron-updater": "^6.1.1",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config": "^1.0.1",
