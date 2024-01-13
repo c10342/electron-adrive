@@ -3,5 +3,14 @@ export enum RouteNameEnunm {
   Folder = "Folder",
   Image = "Image",
   Sync = "Sync",
-  Transfer = "Transfer"
+  Transfer = "Transfer",
+  Backup = "Backup",
+  Resource = "Resource",
+  AllImage = "AllImage",
+  MyImage = "MyImage"
+}
+
+export enum MenuType {
+  One = "one",
+  Two = "two"
 }

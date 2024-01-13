@@ -1,5 +1,8 @@
 <template>
-  <div>相册</div>
+  <menu-layout :name="RouteNameEnunm.Image"></menu-layout>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import MenuLayout from "../../components/menuLayout.vue";
+import { RouteNameEnunm } from "../../utils/enums";
+</script>
