@@ -17,7 +17,7 @@
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Logo from "../../../../../resources/icon.png";
-import { MenuItem } from "../types/common";
+import { MenuItem, MenuMate } from "../types/common";
 import { MenuType } from "../utils/enums";
 
 const router = useRouter();
@@ -25,16 +25,17 @@ const router = useRouter();
 const route = useRoute();
 
 const routerName = computed(() => {
-  return route.name as string;
+  const menu = route.meta?.menu as MenuMate | null;
+  return (menu?.parent || route.name) as string;
 });
 
 const menus = computed(() => {
   const routes = router.getRoutes().filter((r) => {
-    const menu = r.meta?.menu as any;
+    const menu = r.meta?.menu as MenuMate | null;
     return menu && menu?.type === MenuType.One;
   });
   const list: MenuItem[] = routes.map((r) => {
-    const menu = r.meta.menu as any;
+    const menu = r.meta.menu as MenuMate;
     const obj: MenuItem = {
       label: menu.label,
       icon: menu.icon,

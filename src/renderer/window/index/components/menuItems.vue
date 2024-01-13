@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { MenuItem } from "../types/common";
+import { MenuItem, MenuMate } from "../types/common";
 
 const props = defineProps({
   name: {
@@ -40,7 +40,7 @@ const menus = computed(() => {
   const list: MenuItem[] = (item.children ?? [])
     .filter((r) => !!r.meta?.menu)
     .map((r) => {
-      const menu = r.meta?.menu as any;
+      const menu = r.meta?.menu as MenuMate;
       const obj: MenuItem = {
         label: menu.label,
         icon: menu.icon,
