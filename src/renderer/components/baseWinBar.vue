@@ -1,5 +1,5 @@
 <template>
-  <div class="base-win-bar">
+  <div class="base-win-bar" @mousedown="onMousedown">
     <div class="base-win-bar-icon" @mousedown.stop>
       <div class="bar-icon-item" @click="onMinimize">
         <base-font-icon name="minimize"></base-font-icon>
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useEventHook } from "@renderer/utils/useHooks";
+import { useDragWin, useEventHook } from "@renderer/utils/useHooks";
 import { GlobalEventEnum } from "@share/event";
 import { ref } from "vue";
 
@@ -30,6 +30,8 @@ useEventHook(GlobalEventEnum.Maximize, () => {
 useEventHook(GlobalEventEnum.Unmaximize, () => {
   isMaximize.value = false;
 });
+
+const { onMousedown } = useDragWin();
 
 const onMinimize = () => {
   window.api.minimizeWin();
@@ -51,7 +53,6 @@ const onClose = () => {
   height: var(--win-bar-height);
   position: relative;
   user-select: none;
-  -webkit-app-region: drag;
   .base-win-bar-icon {
     display: flex;
     flex-direction: row;
@@ -60,7 +61,6 @@ const onClose = () => {
     height: 100%;
     top: 0;
     right: 0;
-    -webkit-app-region: no-drag;
     .bar-icon-item {
       height: 100%;
       width: 50px;
