@@ -7,7 +7,12 @@ export enum RouteNameEnunm {
   Backup = "Backup",
   Resource = "Resource",
   AllImage = "AllImage",
-  MyImage = "MyImage"
+  MyImage = "MyImage",
+  Collection = "Collection",
+  Recycle = "Recycle",
+  Upload = "Upload",
+  Download = "Download",
+  Finish = "Finish"
 }
 
 export enum MenuType {

@@ -17,11 +17,13 @@ interface WindowOptions {
   resizable?: boolean;
   frame?: boolean;
   alwaysOnTop?: boolean;
+  minHeight?: number;
+  minWidth?: number;
 }
 
 const defaultOptions: WindowOptions = {
-  width: 900,
-  height: 670,
+  width: 1000,
+  height: 700,
   show: false,
   autoHideMenuBar: true,
   ...(process.platform === "linux" ? { icon } : {}),

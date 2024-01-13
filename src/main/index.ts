@@ -9,7 +9,9 @@ function createBrowserWindow(): void {
   createWindow("index", {
     preload: join(__dirname, "../preload/index.js"),
     autoHideMenuBar: false,
-    frame: false
+    frame: false,
+    minWidth: 1000,
+    minHeight: 700
   });
   initJsbridge();
   // initTray();

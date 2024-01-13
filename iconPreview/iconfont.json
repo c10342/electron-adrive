@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "109799",
+      "name": "upload",
+      "font_class": "upload",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
       "icon_id": "109733",
       "name": "download",
       "font_class": "download",
@@ -104,13 +111,6 @@
       "unicode_decimal": 58966
     },
     {
-      "icon_id": "7458775",
-      "name": "Upload-folder",
-      "font_class": "Upload-folder",
-      "unicode": "e6bb",
-      "unicode_decimal": 59067
-    },
-    {
       "icon_id": "8106221",
       "name": "settings",
       "font_class": "settings",
@@ -186,13 +186,6 @@
       "font_class": "chenggong_finished",
       "unicode": "e60f",
       "unicode_decimal": 58895
-    },
-    {
-      "icon_id": "23732727",
-      "name": "upload_file",
-      "font_class": "upload_file",
-      "unicode": "e619",
-      "unicode_decimal": 58905
     },
     {
       "icon_id": "34024483",

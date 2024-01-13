@@ -1,5 +1,8 @@
 <template>
-  <div>传输</div>
+  <menu-layout :name="RouteNameEnunm.Transfer"></menu-layout>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import MenuLayout from "../../components/menuLayout.vue";
+import { RouteNameEnunm } from "../../utils/enums";
+</script>

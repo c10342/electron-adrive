@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4337171 */
-  src: url('iconfont.woff2?t=1700405844953') format('woff2'),
-       url('iconfont.woff?t=1700405844953') format('woff'),
-       url('iconfont.ttf?t=1700405844953') format('truetype');
+  src: url('iconfont.woff2?t=1705152969746') format('woff2'),
+       url('iconfont.woff?t=1705152969746') format('woff'),
+       url('iconfont.ttf?t=1705152969746') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-upload:before {
+  content: "\e657";
 }
 
 .icon-download:before {
@@ -69,10 +73,6 @@
   content: "\e656";
 }
 
-.icon-Upload-folder:before {
-  content: "\e6bb";
-}
-
 .icon-settings:before {
   content: "\e699";
 }
@@ -115,10 +115,6 @@
 
 .icon-chenggong_finished:before {
   content: "\e60f";
-}
-
-.icon-upload_file:before {
-  content: "\e619";
 }
 
 .icon-transfer_vertical_line:before {
