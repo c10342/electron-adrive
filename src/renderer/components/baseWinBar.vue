@@ -53,6 +53,7 @@ const onClose = () => {
   height: var(--win-bar-height);
   position: relative;
   user-select: none;
+  background-color: #e8e8e9;
   .base-win-bar-icon {
     display: flex;
     flex-direction: row;
