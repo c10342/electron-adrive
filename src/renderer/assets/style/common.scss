@@ -33,3 +33,9 @@
     padding: $i + px;
   }
 }
+
+@for $i from 1 through 30 {
+  .fs-#{$i} {
+    font-size: $i + px;
+  }
+}

@@ -13,7 +13,20 @@
 // }
 
 // 方法调用
-export enum MethodEnum {}
+export enum JsbridgeEnum {
+  // 设置窗口位置
+  SetWinPosition = "setWinPosition",
+  // 获取窗口位置
+  GetWinPosition = "getWinPosition",
+  // 关闭窗口
+  CloseWin = "closeWin",
+  // 最大化窗口
+  MaximizeWin = "maximizeWin",
+  // 最小化窗口
+  MinimizeWin = "minimizeWin",
+  // 还原窗口
+  UnmaximizeWin = "unmaximizeWin"
+}
 
 // 全局事件广播
 export enum GlobalEventEnum {

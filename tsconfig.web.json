@@ -4,7 +4,8 @@
     "src/renderer/env.d.ts",
     "src/renderer/**/*",
     "src/renderer/**/*.vue",
-    "src/preload/*.d.ts"
+    "src/preload/*.d.ts",
+    "src/share/**/*"
   ],
   "compilerOptions": {
     "composite": true,
@@ -12,6 +13,9 @@
     "paths": {
       "@renderer/*": [
         "src/renderer/*"
+      ],
+      "@share/*": [
+        "src/share/*"
       ]
     }
   }

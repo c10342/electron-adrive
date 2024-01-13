@@ -4,6 +4,7 @@ import { shell, BrowserWindow } from "electron";
 import { join } from "path";
 import { is } from "@electron-toolkit/utils";
 import { icon } from "../config/images";
+import { GlobalEventEnum } from "@share/event";
 
 interface WindowOptions {
   width?: number;
@@ -49,6 +50,15 @@ const createWindow = (winName: string, options?: WindowOptions) => {
   win.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: "deny" };
+  });
+  win.on("maximize", () => {
+    win.webContents.send(GlobalEventEnum.Maximize);
+  });
+  win.on("minimize", () => {
+    win.webContents.send(GlobalEventEnum.Minimize);
+  });
+  win.on("unmaximize", () => {
+    win.webContents.send(GlobalEventEnum.Unmaximize);
   });
 
   const devIp = process.env["ELECTRON_RENDERER_URL"];

@@ -20,15 +20,26 @@ const getInput = () => {
 
 export default defineConfig({
   main: {
+    resolve: {
+      alias: {
+        "@share": resolve("src/share")
+      }
+    },
     plugins: [externalizeDepsPlugin()]
   },
   preload: {
+    resolve: {
+      alias: {
+        "@share": resolve("src/share")
+      }
+    },
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
     resolve: {
       alias: {
-        "@renderer": resolve("src/renderer")
+        "@renderer": resolve("src/renderer"),
+        "@share": resolve("src/share")
       }
     },
     plugins: [
@@ -39,7 +50,14 @@ export default defineConfig({
             importStyle: false // css in js
           })
         ],
-        dirs: "components"
+        dirs: "components",
+        globs: [
+          "components/*.vue",
+          "components/*.tsx",
+          "components/*/index.vue",
+          "components/*/index.tsx",
+          "components/*/index.ts"
+        ]
       })
     ],
     build: {

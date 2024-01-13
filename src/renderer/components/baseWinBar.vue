@@ -1,46 +1,57 @@
 <template>
-  <div class="base-win-bar" @mousedown="onMousedown">
-    <div class="base-win-bar-icon" @mousedown.stop></div>
+  <div class="base-win-bar">
+    <div class="base-win-bar-icon" @mousedown.stop>
+      <div class="bar-icon-item" @click="onMinimize">
+        <base-font-icon name="minimize"></base-font-icon>
+      </div>
+      <div v-if="isMaximize" class="bar-icon-item" @click="onUnmaximize">
+        <base-font-icon name="maximize" class="fs-13"></base-font-icon>
+      </div>
+      <div v-else class="bar-icon-item" @click="onMaximize">
+        <base-font-icon name="window-maximize" class="fs-13"></base-font-icon>
+      </div>
+      <div class="bar-icon-item bar-icon-close" @click="onClose">
+        <base-font-icon name="close"></base-font-icon>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { onBeforeUnmount } from "vue";
+import { useEventHook } from "@renderer/utils/useHooks";
+import { GlobalEventEnum } from "@share/event";
+import { ref } from "vue";
 
-let startX = 0;
-let startY = 0;
+const isMaximize = ref(false);
 
-const onMouseMove = (event: MouseEvent) => {
-  const endX = event.clientX;
-  const endY = event.clientY;
-  const offsetX = endX - startX;
-  const offsetY = endY - startY;
-  console.log("offsetX", offsetX);
-  console.log("offsetY", offsetY);
+useEventHook(GlobalEventEnum.Maximize, () => {
+  isMaximize.value = true;
+});
+useEventHook(GlobalEventEnum.Unmaximize, () => {
+  isMaximize.value = false;
+});
 
-  startX = endX;
-  startY = endY;
+const onMinimize = () => {
+  window.api.minimizeWin();
+};
+const onMaximize = () => {
+  window.api.maximizeWin();
+};
+const onUnmaximize = () => {
+  window.api.unmaximizeWin();
 };
 
-const onMouseUp = () => {
-  document.removeEventListener("mousemove", onMouseMove);
-  document.removeEventListener("mouseup", onMouseUp);
+const onClose = () => {
+  window.api.closeWin();
 };
-const onMousedown = (event: MouseEvent) => {
-  startX = event.clientX;
-  startY = event.clientY;
-  document.addEventListener("mousemove", onMouseMove);
-  document.addEventListener("mouseup", onMouseUp);
-};
-
-onBeforeUnmount(onMouseUp);
 </script>
 
 <style lang="scss">
 .base-win-bar {
   height: var(--win-bar-height);
-  background-color: red;
   position: relative;
+  user-select: none;
+  -webkit-app-region: drag;
   .base-win-bar-icon {
     display: flex;
     flex-direction: row;
@@ -49,6 +60,25 @@ onBeforeUnmount(onMouseUp);
     height: 100%;
     top: 0;
     right: 0;
+    -webkit-app-region: no-drag;
+    .bar-icon-item {
+      height: 100%;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #25262b;
+      &:hover {
+        background-color: #dbdeed;
+      }
+      &.bar-icon-close {
+        &:hover {
+          background-color: var(--color-dangerr);
+          color: #fff;
+        }
+      }
+    }
   }
 }
 </style>
