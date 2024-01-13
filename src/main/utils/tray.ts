@@ -1,8 +1,8 @@
 // 系统托盘
 import { Tray } from "electron";
-import { icon } from "../config/images";
 import createWindow from "./createWindow";
 import { join } from "path";
+import { Logo } from "@share/resources";
 
 const initTray = () => {
   const win = createWindow("tray", {
@@ -20,7 +20,7 @@ const initTray = () => {
   });
   //   不在任务栏显示任务
   win.setSkipTaskbar(true);
-  const tray = new Tray(icon);
+  const tray = new Tray(Logo);
   tray.on("right-click", (_event, bounds) => {
     const info = win.getBounds();
     win.setPosition(bounds.x - (info.width - 10), bounds.y - (info.height - 10));

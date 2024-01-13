@@ -29,7 +29,13 @@ export enum JsbridgeEnum {
   // 显示窗口
   ShowWin = "showWin",
   // 隐藏窗口
-  HideWin = "hideWin"
+  HideWin = "hideWin",
+  // 根据传入的路径选择对应的软件打开
+  OpenUrl = "openUrl",
+  // 获取软件信息
+  GetEnvInfo = "getEnvInfo",
+  // 显示一个消息框
+  ShowMessageBox = "showMessageBox"
 }
 
 // 全局事件广播

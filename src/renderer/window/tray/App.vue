@@ -24,7 +24,9 @@
 
 <script lang="ts" setup>
 import { WinNameEnum } from "@share/enum";
-import Logo from "../../../../resources/icon.png";
+import { Logo } from "@share/resources";
+import { logError } from "@share/log";
+import { formatPath } from "@renderer/utils/common";
 interface MenuItem {
   label: string;
   type: "item";
@@ -40,17 +42,39 @@ const list: Array<MenuItem | MenuLine> = [
     label: "打开主面板",
     type: "item",
     onClick() {
-      console.log(window.api.showWin);
-
       window.api.showWin({ name: WinNameEnum.Main });
     }
   },
-  { label: "打开阿里云盘网页版", type: "item" },
+  {
+    label: "打开阿里云盘网页版",
+    type: "item",
+    onClick() {
+      window.api.openUrl({ url: "https://www.alipan.com/" });
+    }
+  },
   { type: "line" },
   { label: "设置", type: "item" },
   { label: "检查更新", type: "item" },
   { type: "line" },
-  { label: "关于", type: "item" },
+  {
+    label: "关于",
+    type: "item",
+    onClick() {
+      window.api
+        .getEnvInfo()
+        .then((res) => {
+          window.api.showMessageBox({
+            // modal: true,
+            // icon: "E:/project/aDrive/resources/icon.png",
+            icon: formatPath(Logo),
+            title: "关于",
+            message: `Electron: ${res.versions.electron}\r\nChromium: ${res.versions.chrome}\r\nNode.js: ${res.versions.node}\r\nV8: ${res.versions.v8}\r\nOS: ${res.os.name} ${res.os.arch} ${res.os.release}
+          `
+          });
+        })
+        .catch(logError);
+    }
+  },
   { label: "帮助中心", type: "item" },
   { label: "在线咨询", type: "item" },
   { type: "line" },

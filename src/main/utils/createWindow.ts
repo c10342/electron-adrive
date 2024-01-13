@@ -3,8 +3,8 @@
 import { shell, BrowserWindow } from "electron";
 import { join } from "path";
 import { is } from "@electron-toolkit/utils";
-import { icon } from "../config/images";
 import { GlobalEventEnum } from "@share/event";
+import { Logo } from "@share/resources";
 
 interface WindowOptions {
   width?: number;
@@ -31,7 +31,7 @@ const defaultOptions: WindowOptions = {
   height: 700,
   show: false,
   autoHideMenuBar: true,
-  ...(process.platform === "linux" ? { icon } : {}),
+  ...(process.platform === "linux" ? { icon: Logo } : {}),
   showReady: true
 };
 

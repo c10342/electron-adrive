@@ -5,7 +5,8 @@
     "src/renderer/**/*",
     "src/renderer/**/*.vue",
     "src/preload/*.d.ts",
-    "src/share/**/*"
+    "src/share/**/*",
+    "src/global.d.ts"
   ],
   "compilerOptions": {
     "composite": true,

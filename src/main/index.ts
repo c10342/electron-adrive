@@ -15,17 +15,6 @@ function createBrowserWindow(): void {
     minHeight: 700,
     winName: WinNameEnum.Main
   });
-  // createWindow("tray", {
-  //   width: 200,
-  //   height: 400,
-  //   show: false,
-  //   resizable: false,
-  //   x: 928 - 190,
-  //   y: 760 - 390,
-  //   preload: join(__dirname, "../preload/index.js")
-  //   // frame: false,
-  //   // alwaysOnTop: true
-  // });
   initJsbridge();
   initTray();
 }
