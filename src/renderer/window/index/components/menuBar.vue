@@ -18,7 +18,7 @@ import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Logo from "../../../../../resources/icon.png";
 import { MenuItem, MenuMate } from "../types/common";
-import { MenuType } from "../utils/enums";
+import { MenuType } from "../utils/enum";
 
 const router = useRouter();
 

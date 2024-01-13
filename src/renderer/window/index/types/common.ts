@@ -1,4 +1,4 @@
-import { MenuType, RouteNameEnunm } from "../utils/enums";
+import { MenuType, RouteNameEnunm } from "../utils/enum";
 
 export interface MenuItem {
   icon: string;

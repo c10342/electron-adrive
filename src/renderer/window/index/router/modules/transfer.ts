@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import { MenuType, RouteNameEnunm } from "../../utils/enums";
+import { MenuType, RouteNameEnunm } from "../../utils/enum";
 import Transfer from "../../views/transfer/index.vue";
 import Upload from "../../views/transfer/upload.vue";
 import Download from "../../views/transfer/download.vue";

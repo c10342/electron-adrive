@@ -25,7 +25,11 @@ export enum JsbridgeEnum {
   // 最小化窗口
   MinimizeWin = "minimizeWin",
   // 还原窗口
-  UnmaximizeWin = "unmaximizeWin"
+  UnmaximizeWin = "unmaximizeWin",
+  // 显示窗口
+  ShowWin = "showWin",
+  // 隐藏窗口
+  HideWin = "hideWin"
 }
 
 // 全局事件广播

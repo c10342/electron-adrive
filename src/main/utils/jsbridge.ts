@@ -1,6 +1,17 @@
 import { JsbridgeEnum } from "@share/event";
-import { SetWinPositionParams } from "@share/type";
-import { BrowserWindow, ipcMain } from "electron";
+import { SetWinPositionParams, CommomParams } from "@share/type";
+import { BrowserWindow, WebContents, ipcMain } from "electron";
+import { winNameMap } from "./createWindow";
+
+const getWin = (params: { name?: string; sender?: WebContents }) => {
+  let win: BrowserWindow | null = null;
+  if (params.name) {
+    win = BrowserWindow.fromId(winNameMap[params.name]);
+  } else if (params.sender) {
+    win = BrowserWindow.fromWebContents(params.sender);
+  }
+  return win;
+};
 
 // jsbridge
 const initJsbridge = () => {
@@ -44,6 +55,16 @@ const initJsbridge = () => {
   ipcMain.on(JsbridgeEnum.CloseWin, (event) => {
     const win = BrowserWindow.fromWebContents(event.sender);
     win?.close();
+  });
+  // 显示窗口
+  ipcMain.on(JsbridgeEnum.ShowWin, (event, params?: CommomParams) => {
+    const win = getWin({ name: params?.name, sender: event.sender });
+    win?.show();
+  });
+  // 隐藏窗口
+  ipcMain.on(JsbridgeEnum.HideWin, (event, params?: CommomParams) => {
+    const win = getWin({ name: params?.name, sender: event.sender });
+    win?.hide();
   });
 };
 

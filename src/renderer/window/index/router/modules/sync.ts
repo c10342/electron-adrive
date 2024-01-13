@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import { MenuType, RouteNameEnunm } from "../../utils/enums";
+import { MenuType, RouteNameEnunm } from "../../utils/enum";
 import Sync from "../../views/sync/index.vue";
 
 const routes: RouteRecordRaw[] = [

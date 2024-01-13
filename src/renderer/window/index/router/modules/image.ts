@@ -1,4 +1,4 @@
-import { MenuType, RouteNameEnunm } from "../../utils/enums";
+import { MenuType, RouteNameEnunm } from "../../utils/enum";
 import AllImage from "../../views/image/all.vue";
 import MyImage from "../../views/image/my.vue";
 import Image from "../../views/image/index.vue";

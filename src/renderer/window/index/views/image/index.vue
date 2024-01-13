@@ -4,5 +4,5 @@
 
 <script lang="ts" setup>
 import MenuLayout from "../../components/menuLayout.vue";
-import { RouteNameEnunm } from "../../utils/enums";
+import { RouteNameEnunm } from "../../utils/enum";
 </script>

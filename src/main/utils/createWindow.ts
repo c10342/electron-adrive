@@ -19,7 +19,12 @@ interface WindowOptions {
   alwaysOnTop?: boolean;
   minHeight?: number;
   minWidth?: number;
+  x?: number;
+  y?: number;
+  winName?: string;
 }
+
+export const winNameMap: Record<string, number> = {};
 
 const defaultOptions: WindowOptions = {
   width: 1000,
@@ -42,13 +47,15 @@ const createWindow = (winName: string, options?: WindowOptions) => {
       sandbox: false
     }
   });
+  if (options?.winName) {
+    winNameMap[options.winName] = win.id;
+  }
 
   if (!config.show && config.showReady) {
     win.on("ready-to-show", () => {
       win.show();
     });
   }
-
   win.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: "deny" };

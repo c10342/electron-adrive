@@ -1,3 +1,7 @@
+export interface CommomParams {
+  name?: string;
+}
+
 export interface SetWinPositionParams {
   x: number;
   y: number;

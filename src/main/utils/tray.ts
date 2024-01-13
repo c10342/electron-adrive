@@ -2,11 +2,13 @@
 import { Tray } from "electron";
 import { icon } from "../config/images";
 import createWindow from "./createWindow";
+import { join } from "path";
 
 const initTray = () => {
   const win = createWindow("tray", {
-    width: 50,
-    height: 100,
+    preload: join(__dirname, "../preload/index.js"),
+    width: 200,
+    height: 400,
     show: false,
     resizable: false,
     frame: false,

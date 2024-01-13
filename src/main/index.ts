@@ -3,7 +3,8 @@ import { join } from "path";
 import { electronApp, optimizer } from "@electron-toolkit/utils";
 import createWindow from "./utils/createWindow";
 import initJsbridge from "./utils/jsbridge";
-// import initTray from "./utils/tray";
+import { WinNameEnum } from "@share/enum";
+import initTray from "./utils/tray";
 
 function createBrowserWindow(): void {
   createWindow("index", {
@@ -11,10 +12,22 @@ function createBrowserWindow(): void {
     autoHideMenuBar: false,
     frame: false,
     minWidth: 1000,
-    minHeight: 700
+    minHeight: 700,
+    winName: WinNameEnum.Main
   });
+  // createWindow("tray", {
+  //   width: 200,
+  //   height: 400,
+  //   show: false,
+  //   resizable: false,
+  //   x: 928 - 190,
+  //   y: 760 - 390,
+  //   preload: join(__dirname, "../preload/index.js")
+  //   // frame: false,
+  //   // alwaysOnTop: true
+  // });
   initJsbridge();
-  // initTray();
+  initTray();
 }
 
 app.whenReady().then(() => {
