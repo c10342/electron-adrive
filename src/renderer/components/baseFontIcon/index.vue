@@ -1,5 +1,5 @@
 <template>
-  <span :class="['base-font-icon', 'iconfont', `icon-${name}`]" :style="{ fontSize }"></span>
+  <span :class="['base-font-icon', 'iconfont', `icon-${name}`]" :style="{ fontSize, color }"></span>
 </template>
 
 <script lang="ts" setup>
@@ -14,6 +14,10 @@ const props = defineProps({
   },
   size: {
     type: [Number, String] as PropType<string | number>,
+    default: ""
+  },
+  color: {
+    type: String,
     default: ""
   }
 });

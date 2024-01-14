@@ -11,6 +11,14 @@
       <base-font-icon :name="menu.icon" :size="24"></base-font-icon>
       <span class="menu-label">{{ menu.label }}</span>
     </div>
+    <a-dropdown placement="topRight" trigger="click">
+      <div class="menu-setting">
+        <base-font-icon :size="40" name="settings"></base-font-icon>
+      </div>
+      <template #overlay>
+        <base-menu-items :list="settingMenus" width="180px"></base-menu-items>
+      </template>
+    </a-dropdown>
   </div>
 </template>
 <script lang="ts" setup>
@@ -19,6 +27,8 @@ import { useRouter, useRoute } from "vue-router";
 import { MenuItem, MenuMate } from "../types/common";
 import { MenuType } from "../utils/enum";
 import { Logo } from "@share/resources";
+import { BaseMenuItem } from "@renderer/types/common";
+import { BaseMenuType } from "@renderer/utils/enum";
 
 const router = useRouter();
 
@@ -47,6 +57,27 @@ const menus = computed(() => {
 
   return list.sort((a, b) => b.sort - a.sort);
 });
+
+const settingMenus: BaseMenuItem[] = [
+  { label: "会员中心", type: BaseMenuType.Item, key: "1" },
+  { label: "达人中心", type: BaseMenuType.Item, key: "2" },
+  { type: BaseMenuType.Line, key: "3" },
+  { label: "帮助与反馈", type: BaseMenuType.Item, key: "4" },
+  {
+    label: "关于",
+    type: BaseMenuType.Item,
+    key: "5",
+    children: [
+      { label: "隐私条款", type: BaseMenuType.Item, key: "5-1", width: "120px" },
+      { label: "用户条例", type: BaseMenuType.Item, key: "5-2", width: "120px" }
+    ]
+  },
+  { type: BaseMenuType.Line, key: "6" },
+  { label: "设置", type: BaseMenuType.Item, key: "7" },
+  { label: "检查更新", type: BaseMenuType.Item, key: "8" },
+  { type: BaseMenuType.Line, key: "9" },
+  { label: "退出登录", type: BaseMenuType.Item, key: "10" }
+];
 
 const onClick = (menu: MenuItem) => {
   if (menu.name === routerName.value) {
@@ -80,6 +111,7 @@ const onClick = (menu: MenuItem) => {
     width: 60px;
     height: 60px;
     margin-top: 10px;
+    color: #25262b;
 
     &.menu-active {
       background-color: var(--hover-color);
@@ -90,8 +122,18 @@ const onClick = (menu: MenuItem) => {
     .menu-label {
       font-size: 12px;
       margin-top: 6px;
-      color: #25262b;
       padding: 0 4px;
+    }
+  }
+
+  .menu-setting {
+    margin-top: 20px;
+    border-radius: 50%;
+    border: 1px solid #e3e3e5;
+    color: #5f5f63;
+    cursor: pointer;
+    &:hover {
+      background-color: #ececee;
     }
   }
 }
