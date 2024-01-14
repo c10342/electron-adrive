@@ -48,3 +48,34 @@ html,body,#app{
   height: 100%;
   width: 100%;
 }
+
+
+body {
+  scrollbar-width: thin; /* 控制滚动条宽度 */
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px; /* 设置滚动条宽度 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #999; /* 设置滑块颜色 */
+  border-radius: 4px; /* 设置滑块圆角 */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* 设置轨道颜色 */
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* 隐藏滚动条两端的按钮 */
+}
+
+::-webkit-scrollbar-corner {
+  display: none; /* 隐藏角落处的交叉部分 */
+}
+
+::-webkit-resizer {
+  display: none; /* 隐藏调整大小手柄 */
+}
