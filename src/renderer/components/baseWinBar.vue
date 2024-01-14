@@ -1,5 +1,5 @@
 <template>
-  <div class="base-win-bar" @mousedown="onMousedown">
+  <div class="base-win-bar" @mousedown="onMousedown" @dblclick="ondblclick">
     <div class="base-win-bar-icon" @mousedown.stop>
       <div class="bar-icon-item" @click="onMinimize">
         <base-font-icon name="minimize"></base-font-icon>
@@ -45,6 +45,14 @@ const onUnmaximize = () => {
 
 const onClose = () => {
   window.api.closeWin();
+};
+
+const ondblclick = () => {
+  if (isMaximize.value) {
+    window.api.unmaximizeWin();
+  } else {
+    window.api.maximizeWin();
+  }
 };
 </script>
 
