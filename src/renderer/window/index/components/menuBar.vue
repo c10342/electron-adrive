@@ -1,21 +1,30 @@
 <template>
   <div class="menu-bar">
-    <img :src="Logo" class="menu-logo" />
-    <div
-      v-for="menu in menus"
-      :key="menu.name"
-      class="menu-item"
-      :class="{ 'menu-active': menu.name === routerName }"
-      @click="onClick(menu)"
-    >
-      <base-font-icon :name="menu.icon" :size="24"></base-font-icon>
-      <span class="menu-label">{{ menu.label }}</span>
-    </div>
-    <base-dropdown-menu :list="settingMenus" width="180px">
-      <div class="menu-setting">
-        <base-font-icon :size="40" name="settings"></base-font-icon>
+    <div class="menu-wrapper">
+      <img :src="Logo" class="menu-logo" />
+      <div
+        v-for="menu in menus"
+        :key="menu.name"
+        class="menu-item"
+        :class="{ 'menu-active': menu.name === routerName }"
+        @click="onClick(menu)"
+      >
+        <base-font-icon :name="menu.icon" :size="24"></base-font-icon>
+        <span class="menu-label">{{ menu.label }}</span>
       </div>
-    </base-dropdown-menu>
+    </div>
+    <div class="menu-wrapper">
+      <base-dropdown-menu :list="settingMenus" width="180px">
+        <div class="menu-setting menu-bottom">
+          <base-font-icon :size="40" name="settings"></base-font-icon>
+        </div>
+      </base-dropdown-menu>
+      <a-avatar
+        src="https://xsgames.co/randomusers/assets/avatars/pixel/30.jpg"
+        size="large"
+        class="menu-bottom"
+      />
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -98,6 +107,13 @@ const onClick = (menu: MenuItem) => {
   flex-direction: column;
   align-items: center;
   padding: 10px 0;
+  justify-content: space-between;
+  .menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
   .menu-logo {
     width: 50px;
     height: 50px;
@@ -128,7 +144,6 @@ const onClick = (menu: MenuItem) => {
   }
 
   .menu-setting {
-    margin-top: 20px;
     border-radius: 50%;
     border: 1px solid #e3e3e5;
     color: #5f5f63;
@@ -136,6 +151,18 @@ const onClick = (menu: MenuItem) => {
     &:hover {
       background-color: #ececee;
     }
+  }
+  .menu-bottom {
+    + .menu-bottom {
+      margin-top: 20px;
+    }
+    // height: 40px;
+    // width: 40px;
+    // > * {
+    //   display: inline-block;
+    //   height: 100%;
+    //   width: 100%;
+    // }
   }
 }
 </style>

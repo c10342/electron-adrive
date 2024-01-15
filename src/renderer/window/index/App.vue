@@ -16,11 +16,3 @@
 <script lang="ts" setup>
 import MenuBar from "./components/menuBar.vue";
 </script>
-
-<style lang="scss">
-.left-panel {
-  border-right: 1px solid #e6e7e8;
-  width: 170px;
-  height: 100%;
-}
-</style>
