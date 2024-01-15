@@ -7,7 +7,7 @@ import { WinNameEnum } from "@share/enum";
 import initTray from "./utils/tray";
 
 function createBrowserWindow(): void {
-  createWindow("index", {
+  const win = createWindow("index", {
     preload: join(__dirname, "../preload/index.js"),
     autoHideMenuBar: false,
     // frame: false,
@@ -15,6 +15,8 @@ function createBrowserWindow(): void {
     minHeight: 700,
     winName: WinNameEnum.Main
   });
+  win.maximize();
+  win.webContents.openDevTools();
   initJsbridge();
   initTray();
 }

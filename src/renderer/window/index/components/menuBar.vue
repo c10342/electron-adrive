@@ -11,14 +11,11 @@
       <base-font-icon :name="menu.icon" :size="24"></base-font-icon>
       <span class="menu-label">{{ menu.label }}</span>
     </div>
-    <a-dropdown placement="topRight" trigger="click">
+    <base-dropdown-menu :list="settingMenus" width="180px">
       <div class="menu-setting">
         <base-font-icon :size="40" name="settings"></base-font-icon>
       </div>
-      <template #overlay>
-        <base-menu-items :list="settingMenus" width="180px"></base-menu-items>
-      </template>
-    </a-dropdown>
+    </base-dropdown-menu>
   </div>
 </template>
 <script lang="ts" setup>
@@ -59,7 +56,11 @@ const menus = computed(() => {
 });
 
 const settingMenus: BaseMenuItem[] = [
-  { label: "会员中心", type: BaseMenuType.Item, key: "1" },
+  {
+    label: "会员中心",
+    type: BaseMenuType.Item,
+    key: "1"
+  },
   { label: "达人中心", type: BaseMenuType.Item, key: "2" },
   { type: BaseMenuType.Line, key: "3" },
   { label: "帮助与反馈", type: BaseMenuType.Item, key: "4" },

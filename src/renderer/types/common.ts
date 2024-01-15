@@ -6,4 +6,5 @@ export interface BaseMenuItem {
   children?: BaseMenuItem[];
   key: string;
   width?: string;
+  onClick?: () => any;
 }

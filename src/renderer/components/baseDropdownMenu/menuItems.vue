@@ -4,6 +4,7 @@
       v-if="item.type === BaseMenuType.Item && item.children?.length"
       :key="item.key"
       :title="item.label"
+      :style="{ width: item.width || width }"
     >
       <menu-items :list="item.children" :width="width"></menu-items>
     </a-sub-menu>
@@ -14,12 +15,11 @@
     >
       {{ item.label }}
     </a-menu-item>
-    <div
+    <a-menu-divider
       v-if="item.type === BaseMenuType.Line"
       :key="item.key"
       :style="{ width: item.width || width }"
-      class="menu-line"
-    ></div>
+    ></a-menu-divider>
   </template>
 </template>
 <script lang="ts" setup>
