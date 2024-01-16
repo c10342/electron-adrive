@@ -12,10 +12,19 @@ export enum RouteNameEnunm {
   Recycle = "Recycle",
   Upload = "Upload",
   Download = "Download",
-  Finish = "Finish"
+  Finish = "Finish",
+  Setting = "Setting"
 }
 
+// 菜单层级
 export enum MenuType {
   One = "one",
   Two = "two"
+}
+
+// 系统主题色
+export enum SystemThemeEnum {
+  Dark = "dark",
+  Light = "light",
+  System = "system"
 }

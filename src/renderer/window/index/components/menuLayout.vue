@@ -35,11 +35,16 @@
         </template>
       </base-col-layout>
     </template>
-    <router-view v-slot="{ Component }">
-      <keep-alive>
-        <component :is="Component" />
-      </keep-alive>
-    </router-view>
+    <template v-if="mode === 'routerView'">
+      <router-view v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
+    </template>
+    <template v-else-if="mode === 'slot'">
+      <slot></slot>
+    </template>
   </base-row-layout>
 </template>
 
@@ -48,11 +53,16 @@ import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { MenuItem, MenuMate } from "../types/common";
 import moment from "moment";
+import { PropType } from "vue";
 
 const props = defineProps({
   name: {
     type: String,
     default: ""
+  },
+  mode: {
+    type: String as PropType<"routerView" | "slot">,
+    default: "routerView"
   }
 });
 

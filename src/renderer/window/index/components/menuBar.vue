@@ -31,7 +31,7 @@
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { MenuItem, MenuMate } from "../types/common";
-import { MenuType } from "../utils/enum";
+import { MenuType, RouteNameEnunm } from "../utils/enum";
 import { Logo } from "@share/resources";
 import { BaseMenuItem } from "@renderer/types/common";
 import { BaseMenuType } from "@renderer/utils/enum";
@@ -83,7 +83,14 @@ const settingMenus: BaseMenuItem[] = [
     ]
   },
   { type: BaseMenuType.Line, key: "6" },
-  { label: "设置", type: BaseMenuType.Item, key: "7" },
+  {
+    label: "设置",
+    type: BaseMenuType.Item,
+    key: "7",
+    onClick() {
+      router.push({ name: RouteNameEnunm.Setting });
+    }
+  },
   { label: "检查更新", type: BaseMenuType.Item, key: "8" },
   { type: BaseMenuType.Line, key: "9" },
   { label: "退出登录", type: BaseMenuType.Item, key: "10" }
