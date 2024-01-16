@@ -8,7 +8,6 @@
       </template>
       <div class="scroll-container padding-20">
         <a-form
-          :model="formState"
           :label-col="{ style: { width: '150px' } }"
           :wrapper-col="{ span: 14 }"
           size="large"
@@ -16,7 +15,10 @@
           :colon="false"
         >
           <a-form-item label="外观">
-            <a-radio-group>
+            <a-radio-group
+              :value="state.SystemModule.theme"
+              @update:value="updateValue('theme', $event)"
+            >
               <a-radio :value="SystemThemeEnum.Light">浅色</a-radio>
               <a-radio :value="SystemThemeEnum.Dark">深色</a-radio>
               <a-radio :value="SystemThemeEnum.System">跟随系统</a-radio>
@@ -71,24 +73,18 @@
 
 <script lang="ts" setup>
 import MenuLayout from "../../components/menuLayout.vue";
+import { SystemModuleState } from "../../types/store";
 import { RouteNameEnunm, SystemThemeEnum } from "../../utils/enum";
-import { reactive } from "vue";
-import type { UnwrapRef } from "vue";
+import { useStore } from "../../utils/hooks";
 
-interface FormState {
-  name: string;
-  delivery: boolean;
-  type: string[];
-  resource: string;
-  desc: string;
-}
-const formState: UnwrapRef<FormState> = reactive({
-  name: "",
-  delivery: false,
-  type: [],
-  resource: "",
-  desc: ""
-});
+const { state, commit } = useStore();
+
+const updateValue = (key: keyof SystemModuleState, value: any) => {
+  commit("SystemModule/updateByKey", {
+    key,
+    value
+  });
+};
 </script>
 
 <style lang="scss">
