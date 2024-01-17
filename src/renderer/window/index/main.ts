@@ -3,4 +3,4 @@ import initApp from "@renderer/utils/createApp";
 import router from "./router";
 import store from "./store";
 
-initApp(App, [router, store as any]);
+initApp(App, [router, store]);

@@ -1,7 +1,8 @@
 import { SystemModuleState } from "@share/type";
 import { Commit, Dispatch, Getters } from "./storeType";
+import { Store } from "vuex";
 
-export interface UseStore {
+export interface UseStore extends Store<GlobalStoreData> {
   state: GlobalStoreData;
   getters: Getters;
   commit: Commit;

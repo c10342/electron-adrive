@@ -1,10 +1,10 @@
 import { createStore } from "vuex";
 import modules from "./modules";
-import { GlobalStoreData } from "../types/store";
+import { GlobalStoreData, UseStore } from "../types/store";
 import { logError } from "@share/log";
 import { SystemModuleState } from "@share/type";
 
-const store = createStore<GlobalStoreData>({
+const store: UseStore = createStore<GlobalStoreData>({
   modules
 });
 
