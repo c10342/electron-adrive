@@ -1,33 +1,28 @@
 import { createStore } from "vuex";
 import modules from "./modules";
 import { GlobalStoreData, UseStore } from "../types/store";
-import { logError } from "@share/log";
-import { SystemModuleState } from "@share/type";
+// import { logError } from "@share/log";
+// import { SystemModuleState } from "@share/type";
 
-const store: UseStore = createStore<GlobalStoreData>({
+export const store: UseStore = createStore<GlobalStoreData>({
   modules
 });
 
-store.subscribe((mutation, state) => {
-  if (mutation.type.startsWith("SystemModule")) {
-    window.api.setStore({
-      key: "SystemModule",
-      value: { ...state.SystemModule }
-    });
-  }
-});
-
-window.api
-  .getStore("SystemModule")
-  .then((res: SystemModuleState | null) => {
-    if (!res) {
-      return;
-    }
+export const initStoreState = async () => {
+  const SystemModule = await window.api.getStore("SystemModule");
+  if (SystemModule) {
+    // 由于是异步的，所以如果页面先出现，会导致原来使用的数据失去响应式
     store.replaceState({
-      SystemModule: res,
+      SystemModule: { ...SystemModule },
       UserModule: { userInfo: null }
     });
-  })
-  .catch(logError);
-
-export default store;
+  }
+  store.subscribe((mutation, state) => {
+    if (mutation.type.startsWith("SystemModule")) {
+      window.api.setStore({
+        key: "SystemModule",
+        value: { ...state.SystemModule }
+      });
+    }
+  });
+};

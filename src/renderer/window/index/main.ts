@@ -1,6 +1,11 @@
 import App from "./App.vue";
 import initApp from "@renderer/utils/createApp";
 import router from "./router";
-import store from "./store";
+import { initStoreState, store } from "./store";
 
-initApp(App, [router, store]);
+const render = async () => {
+  await initStoreState();
+  initApp(App, [router, store]);
+};
+
+render();
