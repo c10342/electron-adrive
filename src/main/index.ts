@@ -17,6 +17,8 @@ function createBrowserWindow(): void {
   });
   win.maximize();
   win.webContents.openDevTools();
+  console.log(app.getPath("downloads"));
+
   initJsbridge();
   initTray();
 }

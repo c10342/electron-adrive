@@ -6,7 +6,8 @@ import {
   OpenUrlParams,
   GetEnvInfoRespond,
   ShowMessageBoxParams,
-  ShowMessageBoxRespond
+  ShowMessageBoxRespond,
+  GetPathType
 } from "@share/type";
 import { ipcRenderer } from "electron";
 
@@ -62,6 +63,10 @@ const api = {
   // 显示消息弹框
   [JsbridgeEnum.ShowMessageBox](params: ShowMessageBoxParams): Promise<ShowMessageBoxRespond> {
     return ipcRenderer.invoke(JsbridgeEnum.ShowMessageBox, params);
+  },
+  // 获取相关路径
+  [JsbridgeEnum.GetPath](type: GetPathType): Promise<string> {
+    return ipcRenderer.invoke(JsbridgeEnum.GetPath, type);
   }
 };
 

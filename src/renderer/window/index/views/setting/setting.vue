@@ -25,30 +25,85 @@
             </a-radio-group>
           </a-form-item>
           <a-form-item label="自动启动">
-            <a-checkbox>开机时自动启动阿里云盘</a-checkbox>
-            <a-checkbox>开机启动后最小化窗口</a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.autoStart"
+              @update:checked="updateValue('autoStart', $event)"
+            >
+              开机时自动启动阿里云盘
+            </a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.minStartupWin"
+              @update:checked="updateValue('minStartupWin', $event)"
+            >
+              开机启动后最小化窗口
+            </a-checkbox>
           </a-form-item>
           <a-form-item label="传输设置">
-            <a-checkbox>有传输任务时电脑不休眠</a-checkbox>
-            <a-checkbox>本次传输完自动关机</a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.notSleep"
+              @update:checked="updateValue('notSleep', $event)"
+            >
+              有传输任务时电脑不休眠
+            </a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.autoShutdown"
+              @update:checked="updateValue('autoShutdown', $event)"
+            >
+              本次传输完自动关机
+            </a-checkbox>
           </a-form-item>
           <a-form-item label="文件下载位置">
             <div class="mb-10 flex-row flex-align-center">
-              <a-input disabled size="middle" />
+              <a-input
+                disabled
+                size="middle"
+                :value="state.SystemModule.downloadLocation"
+                @update:value="updateValue('downloadLocation', $event)"
+              />
               <a-button type="link" size="middle">更改</a-button>
             </div>
-            <a-checkbox>默认此路径为下载路径</a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.defaultLocation"
+              @update:checked="updateValue('defaultLocation', $event)"
+            >
+              默认此路径为下载路径
+            </a-checkbox>
           </a-form-item>
           <a-form-item label="多线程上传">
-            <a-checkbox>启用多线程上传</a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.multiThreaded"
+              @update:checked="updateValue('multiThreaded', $event)"
+            >
+              启用多线程上传
+            </a-checkbox>
           </a-form-item>
           <a-form-item label="通知">
-            <a-checkbox>传输状态</a-checkbox>
-            <a-checkbox>系统消息</a-checkbox>
-            <a-checkbox>传输完成消息提示音</a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.transferStatus"
+              @update:checked="updateValue('transferStatus', $event)"
+            >
+              传输状态
+            </a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.systemMessages"
+              @update:checked="updateValue('systemMessages', $event)"
+            >
+              系统消息
+            </a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.messageSound"
+              @update:checked="updateValue('messageSound', $event)"
+            >
+              传输完成消息提示音
+            </a-checkbox>
           </a-form-item>
           <a-form-item label="自动更新">
-            <a-checkbox>传输状态</a-checkbox>
+            <a-checkbox
+              :checked="state.SystemModule.autoUpdate"
+              @update:checked="updateValue('autoUpdate', $event)"
+            >
+              自动更新至最新版本
+            </a-checkbox>
           </a-form-item>
           <a-form-item label="其他">
             <a-button type="link" size="middle">清理缓存</a-button>

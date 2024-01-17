@@ -3,9 +3,10 @@ import {
   SetWinPositionParams,
   CommomParams,
   OpenUrlParams,
-  ShowMessageBoxParams
+  ShowMessageBoxParams,
+  GetPathType
 } from "@share/type";
-import { BrowserWindow, WebContents, dialog, ipcMain, shell } from "electron";
+import { BrowserWindow, WebContents, app, dialog, ipcMain, shell } from "electron";
 import { winNameMap } from "./createWindow";
 import os from "os";
 
@@ -98,6 +99,10 @@ const initJsbridge = () => {
       }
     }
     return dialog.showMessageBox(params);
+  });
+  // 获取相关路径
+  ipcMain.handle(JsbridgeEnum.GetPath, (_event, type: GetPathType) => {
+    return app.getPath(type);
   });
 };
 

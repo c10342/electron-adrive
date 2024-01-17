@@ -60,3 +60,21 @@ export interface ShowMessageBoxRespond {
   // 如果设置了 checkboxLabel，返回复选框是否被选中的状态。 否则，返回 false。
   checkboxChecked: boolean;
 }
+
+export type GetPathType =
+  | "home"
+  | "appData"
+  | "userData"
+  | "sessionData"
+  | "temp"
+  | "exe"
+  | "module"
+  | "desktop"
+  | "documents"
+  | "downloads"
+  | "music"
+  | "pictures"
+  | "videos"
+  | "recent"
+  | "logs"
+  | "crashDumps";

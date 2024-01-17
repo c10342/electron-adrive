@@ -2,7 +2,18 @@ import { SystemModuleState } from "../../types/store";
 import { SystemThemeEnum } from "../../utils/enum";
 
 const state: SystemModuleState = {
-  theme: SystemThemeEnum.System
+  theme: SystemThemeEnum.System,
+  autoStart: false,
+  minStartupWin: false,
+  notSleep: false,
+  autoShutdown: false,
+  downloadLocation: "",
+  defaultLocation: false,
+  multiThreaded: false,
+  transferStatus: false,
+  systemMessages: false,
+  messageSound: false,
+  autoUpdate: false
 };
 
 type StateKeys = keyof SystemModuleState;
@@ -14,9 +25,6 @@ const SystemModule = {
     // todo
   },
   mutations: {
-    setTheme(state: SystemModuleState, value: SystemThemeEnum) {
-      state.theme = value;
-    },
     updateByKey(
       state: SystemModuleState,
       options: {
@@ -24,7 +32,7 @@ const SystemModule = {
         value: SystemModuleState[StateKeys];
       }
     ) {
-      state[options.key] = options.value;
+      state[options.key as any] = options.value;
     }
   },
   actions: {
