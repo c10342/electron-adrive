@@ -106,3 +106,8 @@ export interface SystemModuleState {
   // 自动更新
   autoUpdate: boolean;
 }
+
+export interface SetPathParams {
+  key: "SystemModule";
+  value: any;
+}

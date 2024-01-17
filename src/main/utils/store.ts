@@ -1,5 +1,6 @@
 import { getSystemModuleState } from "@share/helper";
 import { SystemModuleState } from "@share/type";
+import { app } from "electron";
 import Store from "electron-store";
 
 export let store: Store<{ SystemModule: SystemModuleState }> | null = null;
@@ -11,8 +12,9 @@ export const initStore = (params: { name: string }) => {
     schema: {
       SystemModule: {
         type: "object",
-        default: getSystemModuleState()
+        default: getSystemModuleState({ downloadLocation: app.getPath("downloads") })
       }
     }
   });
+  return store;
 };

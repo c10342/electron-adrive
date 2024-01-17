@@ -7,7 +7,8 @@ import {
   GetEnvInfoRespond,
   ShowMessageBoxParams,
   ShowMessageBoxRespond,
-  GetPathType
+  GetPathType,
+  SetPathParams
 } from "@share/type";
 import { ipcRenderer } from "electron";
 
@@ -67,6 +68,14 @@ const api = {
   // 获取相关路径
   [JsbridgeEnum.GetPath](type: GetPathType): Promise<string> {
     return ipcRenderer.invoke(JsbridgeEnum.GetPath, type);
+  },
+  // 获取数据
+  [JsbridgeEnum.GetStore](key: string): Promise<any | null> {
+    return ipcRenderer.invoke(JsbridgeEnum.GetStore, key);
+  },
+  // 设置数据
+  [JsbridgeEnum.SetStore](params: SetPathParams) {
+    ipcRenderer.send(JsbridgeEnum.SetStore, params);
   }
 };
 

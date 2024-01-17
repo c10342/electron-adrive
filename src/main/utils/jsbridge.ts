@@ -4,11 +4,13 @@ import {
   CommomParams,
   OpenUrlParams,
   ShowMessageBoxParams,
-  GetPathType
+  GetPathType,
+  SetPathParams
 } from "@share/type";
 import { BrowserWindow, WebContents, app, dialog, ipcMain, shell } from "electron";
 import { winNameMap } from "./createWindow";
 import os from "os";
+import { store } from "./store";
 
 const getWin = (params: { name?: string; sender?: WebContents }) => {
   let win: BrowserWindow | null = null;
@@ -103,6 +105,14 @@ const initJsbridge = () => {
   // 获取相关路径
   ipcMain.handle(JsbridgeEnum.GetPath, (_event, type: GetPathType) => {
     return app.getPath(type);
+  });
+  // 设置数据
+  ipcMain.on(JsbridgeEnum.SetStore, (_event, params: SetPathParams) => {
+    store?.set(params.key, params.value);
+  });
+  // 获取数据
+  ipcMain.handle(JsbridgeEnum.GetStore, (_event, key: string) => {
+    return store?.get(key);
   });
 };
 

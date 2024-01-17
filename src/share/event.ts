@@ -37,7 +37,11 @@ export enum JsbridgeEnum {
   // 显示一个消息框
   ShowMessageBox = "showMessageBox",
   // 获取相关路径
-  GetPath = "getPath"
+  GetPath = "getPath",
+  // 获取数据
+  GetStore = "getStore",
+  // 设置数据
+  SetStore = "setStore"
 }
 
 // 全局事件广播
