@@ -25,30 +25,30 @@
             </a-radio-group>
           </a-form-item>
           <a-form-item label="自动启动">
-            <a-radio value="1">开机时自动启动阿里云盘</a-radio>
-            <a-radio value="2">开机启动后最小化窗口</a-radio>
+            <a-checkbox>开机时自动启动阿里云盘</a-checkbox>
+            <a-checkbox>开机启动后最小化窗口</a-checkbox>
           </a-form-item>
           <a-form-item label="传输设置">
-            <a-radio value="1">有传输任务时电脑不休眠</a-radio>
-            <a-radio value="2">本次传输完自动关机</a-radio>
+            <a-checkbox>有传输任务时电脑不休眠</a-checkbox>
+            <a-checkbox>本次传输完自动关机</a-checkbox>
           </a-form-item>
           <a-form-item label="文件下载位置">
             <div class="mb-10 flex-row flex-align-center">
               <a-input disabled size="middle" />
               <a-button type="link" size="middle">更改</a-button>
             </div>
-            <a-radio value="2">默认此路径为下载路径</a-radio>
+            <a-checkbox>默认此路径为下载路径</a-checkbox>
           </a-form-item>
           <a-form-item label="多线程上传">
-            <a-radio value="2">启用多线程上传</a-radio>
+            <a-checkbox>启用多线程上传</a-checkbox>
           </a-form-item>
           <a-form-item label="通知">
-            <a-radio value="1">传输状态</a-radio>
-            <a-radio value="2">系统消息</a-radio>
-            <a-radio value="2">传输完成消息提示音</a-radio>
+            <a-checkbox>传输状态</a-checkbox>
+            <a-checkbox>系统消息</a-checkbox>
+            <a-checkbox>传输完成消息提示音</a-checkbox>
           </a-form-item>
           <a-form-item label="自动更新">
-            <a-radio value="1">传输状态</a-radio>
+            <a-checkbox>传输状态</a-checkbox>
           </a-form-item>
           <a-form-item label="其他">
             <a-button type="link" size="middle">清理缓存</a-button>
@@ -60,7 +60,7 @@
                   src="https://xsgames.co/randomusers/assets/avatars/pixel/30.jpg"
                   size="large"
                 />
-                <span>c10342</span>
+                <span class="ml-10">c10342</span>
               </div>
               <a-button size="middle">退出登录</a-button>
             </div>
@@ -95,6 +95,38 @@ const updateValue = (key: keyof SystemModuleState, value: any) => {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+  }
+  .ant-checkbox-wrapper {
+    .ant-checkbox {
+      border-radius: 50%;
+      .ant-checkbox-inner {
+        border-radius: 50%;
+      }
+      &::after {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .ant-radio-wrapper-checked {
+    .ant-radio-checked {
+      .ant-radio-inner {
+        &::after {
+          border-radius: 0;
+          background-color: var(--color-primary);
+          width: 5.7142857142857135px;
+          height: 9.142857142857142px;
+          border: 2px solid #fff;
+          border-top: 0;
+          top: 50%;
+          inset-inline-start: 21.5%;
+          transform: rotate(45deg) scale(1) translate(-50%, -50%);
+          margin-block-start: 0;
+          margin-inline-start: 0;
+          border-left: 0;
+        }
+      }
+    }
   }
 }
 </style>
