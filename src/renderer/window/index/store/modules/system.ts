@@ -1,20 +1,7 @@
-import { SystemModuleState } from "../../types/store";
-import { SystemThemeEnum } from "../../utils/enum";
+import { SystemModuleState } from "@share/type";
+import { getSystemModuleState } from "@share/helper";
 
-const state: SystemModuleState = {
-  theme: SystemThemeEnum.System,
-  autoStart: false,
-  minStartupWin: false,
-  notSleep: false,
-  autoShutdown: false,
-  downloadLocation: "",
-  defaultLocation: false,
-  multiThreaded: false,
-  transferStatus: false,
-  systemMessages: false,
-  messageSound: false,
-  autoUpdate: false
-};
+const state: SystemModuleState = getSystemModuleState();
 
 type StateKeys = keyof SystemModuleState;
 

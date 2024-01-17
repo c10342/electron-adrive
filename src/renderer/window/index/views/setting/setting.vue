@@ -127,10 +127,11 @@
 </template>
 
 <script lang="ts" setup>
+import { SystemThemeEnum } from "@share/enum";
 import MenuLayout from "../../components/menuLayout.vue";
-import { SystemModuleState } from "../../types/store";
-import { RouteNameEnunm, SystemThemeEnum } from "../../utils/enum";
+import { RouteNameEnunm } from "../../utils/enum";
 import { useStore } from "../../utils/hooks";
+import { SystemModuleState } from "@share/type";
 
 const { state, commit } = useStore();
 

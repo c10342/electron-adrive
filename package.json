@@ -24,6 +24,7 @@
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
     "ant-design-vue": "^4.1.0",
+    "electron-store": "^8.1.0",
     "electron-updater": "^6.1.1",
     "lodash-es": "^4.17.21",
     "moment": "^2.30.1",

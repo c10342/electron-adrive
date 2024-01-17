@@ -21,10 +21,3 @@ export enum MenuType {
   One = "one",
   Two = "two"
 }
-
-// 系统主题色
-export enum SystemThemeEnum {
-  Dark = "dark",
-  Light = "light",
-  System = "system"
-}

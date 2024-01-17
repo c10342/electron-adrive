@@ -5,6 +5,7 @@ import createWindow from "./utils/createWindow";
 import initJsbridge from "./utils/jsbridge";
 import { WinNameEnum } from "@share/enum";
 import initTray from "./utils/tray";
+import { initStore } from "./utils/store";
 
 function createBrowserWindow(): void {
   const win = createWindow("index", {
@@ -17,8 +18,7 @@ function createBrowserWindow(): void {
   });
   win.maximize();
   win.webContents.openDevTools();
-  console.log(app.getPath("downloads"));
-
+  initStore({ name: "43221313" });
   initJsbridge();
   initTray();
 }
