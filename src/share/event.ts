@@ -43,7 +43,9 @@ export enum JsbridgeEnum {
   // 设置数据
   SetStore = "setStore",
   // 显示文件弹框
-  ShowOpenDialog = "showOpenDialog"
+  ShowOpenDialog = "showOpenDialog",
+  // 设置窗口是否点击穿透
+  SetIgnoreMouseEvents = "setIgnoreMouseEvents"
 }
 
 // 全局事件广播

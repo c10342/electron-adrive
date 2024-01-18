@@ -1,26 +1,26 @@
 // 创建窗口
 
-import { shell, BrowserWindow } from "electron";
+import { shell, BrowserWindow, BrowserWindowConstructorOptions } from "electron";
 import { join } from "path";
 import { is } from "@electron-toolkit/utils";
 import { GlobalEventEnum } from "@share/event";
 import { Logo } from "@share/resources";
 
-interface WindowOptions {
-  width?: number;
-  height?: number;
-  show?: boolean;
-  autoHideMenuBar?: boolean;
+interface WindowOptions extends BrowserWindowConstructorOptions {
+  // width?: number;
+  // height?: number;
+  // show?: boolean;
+  // autoHideMenuBar?: boolean;
   preload?: string;
-  icon?: string;
+  // icon?: string;
   showReady?: boolean;
-  resizable?: boolean;
-  frame?: boolean;
-  alwaysOnTop?: boolean;
-  minHeight?: number;
-  minWidth?: number;
-  x?: number;
-  y?: number;
+  // resizable?: boolean;
+  // frame?: boolean;
+  // alwaysOnTop?: boolean;
+  // minHeight?: number;
+  // minWidth?: number;
+  // x?: number;
+  // y?: number;
   winName?: string;
 }
 

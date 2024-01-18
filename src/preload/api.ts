@@ -9,7 +9,8 @@ import {
   ShowMessageBoxRespond,
   GetPathType,
   SetPathParams,
-  ShowOpenDialogParrams
+  ShowOpenDialogParrams,
+  SetIgnoreMouseEventsParams
 } from "@share/type";
 import { OpenDialogReturnValue, ipcRenderer } from "electron";
 
@@ -81,6 +82,10 @@ const api = {
   // 打开文件弹框
   [JsbridgeEnum.ShowOpenDialog](params: ShowOpenDialogParrams): Promise<OpenDialogReturnValue> {
     return ipcRenderer.invoke(JsbridgeEnum.ShowOpenDialog, params);
+  },
+  // 设置窗口是否可点击
+  [JsbridgeEnum.SetIgnoreMouseEvents](params: SetIgnoreMouseEventsParams) {
+    ipcRenderer.send(JsbridgeEnum.SetIgnoreMouseEvents, params);
   }
 };
 

@@ -6,9 +6,10 @@ import initJsbridge from "./utils/jsbridge";
 import { WinNameEnum } from "@share/enum";
 import initTray from "./utils/tray";
 import { initStore } from "./utils/store";
+import initFloat from "./utils/float";
 
 function createBrowserWindow(): void {
-  const win = createWindow("index", {
+  createWindow("index", {
     preload: join(__dirname, "../preload/index.js"),
     autoHideMenuBar: true,
     frame: false,
@@ -16,8 +17,8 @@ function createBrowserWindow(): void {
     minHeight: 700,
     winName: WinNameEnum.Main
   });
-  // win.maximize();
-  // win.webContents.openDevTools();
+  // 悬浮窗
+  initFloat();
   initStore({ name: "43221313" });
   initJsbridge();
   initTray();

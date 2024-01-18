@@ -6,7 +6,8 @@ import {
   ShowMessageBoxParams,
   GetPathType,
   SetPathParams,
-  ShowOpenDialogParrams
+  ShowOpenDialogParrams,
+  SetIgnoreMouseEventsParams
 } from "@share/type";
 import { BrowserWindow, WebContents, app, dialog, ipcMain, shell } from "electron";
 import { winNameMap } from "./createWindow";
@@ -120,12 +121,21 @@ const initJsbridge = () => {
     return store?.get(key);
   });
   // 打开文件弹框
-  ipcMain.handle(JsbridgeEnum.ShowOpenDialog, (event, options: ShowOpenDialogParrams) => {
+  ipcMain.handle(JsbridgeEnum.ShowOpenDialog, (event, params: ShowOpenDialogParrams) => {
     const win = BrowserWindow.fromWebContents(event.sender);
-    if (options.modal && win) {
-      return dialog.showOpenDialog(win, options);
+    if (params.modal && win) {
+      return dialog.showOpenDialog(win, params);
     }
-    return dialog.showOpenDialog(options);
+    return dialog.showOpenDialog(params);
+  });
+  // 设置窗口是否可点击
+  ipcMain.on(JsbridgeEnum.SetIgnoreMouseEvents, (event, params: SetIgnoreMouseEventsParams) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    if (!win) {
+      return;
+    }
+
+    return win.setIgnoreMouseEvents(params.ignore, params);
   });
 };
 

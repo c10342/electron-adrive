@@ -116,3 +116,8 @@ export interface ShowOpenDialogParrams extends OpenDialogOptions {
   // 模态弹框
   modal?: boolean;
 }
+
+export interface SetIgnoreMouseEventsParams {
+  ignore: boolean;
+  forward?: boolean;
+}
