@@ -8,9 +8,10 @@ import {
   ShowMessageBoxParams,
   ShowMessageBoxRespond,
   GetPathType,
-  SetPathParams
+  SetPathParams,
+  ShowOpenDialogParrams
 } from "@share/type";
-import { ipcRenderer } from "electron";
+import { OpenDialogReturnValue, ipcRenderer } from "electron";
 
 const api = {
   // 设置窗口位置
@@ -76,6 +77,10 @@ const api = {
   // 设置数据
   [JsbridgeEnum.SetStore](params: SetPathParams) {
     ipcRenderer.send(JsbridgeEnum.SetStore, params);
+  },
+  // 打开文件弹框
+  [JsbridgeEnum.ShowOpenDialog](params: ShowOpenDialogParrams): Promise<OpenDialogReturnValue> {
+    return ipcRenderer.invoke(JsbridgeEnum.ShowOpenDialog, params);
   }
 };
 

@@ -41,7 +41,9 @@ export enum JsbridgeEnum {
   // 获取数据
   GetStore = "getStore",
   // 设置数据
-  SetStore = "setStore"
+  SetStore = "setStore",
+  // 显示文件弹框
+  ShowOpenDialog = "showOpenDialog"
 }
 
 // 全局事件广播

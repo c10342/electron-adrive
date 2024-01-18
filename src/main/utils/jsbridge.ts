@@ -5,7 +5,8 @@ import {
   OpenUrlParams,
   ShowMessageBoxParams,
   GetPathType,
-  SetPathParams
+  SetPathParams,
+  ShowOpenDialogParrams
 } from "@share/type";
 import { BrowserWindow, WebContents, app, dialog, ipcMain, shell } from "electron";
 import { winNameMap } from "./createWindow";
@@ -30,8 +31,12 @@ const initJsbridge = () => {
     if (!win) {
       return;
     }
-
-    win.setPosition(params.x, params.y);
+    const rect = win.getBounds();
+    win.setBounds({
+      ...rect,
+      x: params.x,
+      y: params.y
+    });
   });
   // 获取窗口位置
   ipcMain.handle(JsbridgeEnum.GetWinPosition, (event) => {
@@ -113,6 +118,14 @@ const initJsbridge = () => {
   // 获取数据
   ipcMain.handle(JsbridgeEnum.GetStore, (_event, key: string) => {
     return store?.get(key);
+  });
+  // 打开文件弹框
+  ipcMain.handle(JsbridgeEnum.ShowOpenDialog, (event, options: ShowOpenDialogParrams) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    if (options.modal && win) {
+      return dialog.showOpenDialog(win, options);
+    }
+    return dialog.showOpenDialog(options);
   });
 };
 

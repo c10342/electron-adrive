@@ -1,5 +1,5 @@
 <template>
-  <a-dropdown placement="topRight" :trigger="trigger">
+  <a-dropdown :placement="placement" :trigger="trigger">
     <slot></slot>
     <template #overlay>
       <a-menu class="base-dropdown-menu" @click="onClick">
@@ -27,6 +27,19 @@ const props = defineProps({
   trigger: {
     type: String as PropType<Trigger | Trigger[]>,
     default: "click"
+  },
+  placement: {
+    type: String as PropType<
+      | "topRight"
+      | "top"
+      | "bottom"
+      | "bottomLeft"
+      | "bottomRight"
+      | "topLeft"
+      | "topCenter"
+      | "bottomCenter"
+    >,
+    default: "topRight"
   }
 });
 

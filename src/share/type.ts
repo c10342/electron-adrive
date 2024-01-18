@@ -1,4 +1,4 @@
-import { MessageBoxOptions } from "electron";
+import { MessageBoxOptions, OpenDialogOptions } from "electron";
 import { SystemThemeEnum } from "./enum";
 
 export interface CommomParams {
@@ -110,4 +110,9 @@ export interface SystemModuleState {
 export interface SetPathParams {
   key: "SystemModule";
   value: any;
+}
+
+export interface ShowOpenDialogParrams extends OpenDialogOptions {
+  // 模态弹框
+  modal?: boolean;
 }

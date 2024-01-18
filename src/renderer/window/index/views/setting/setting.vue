@@ -60,7 +60,7 @@
                 :value="state.SystemModule.downloadLocation"
                 @update:value="updateValue('downloadLocation', $event)"
               />
-              <a-button type="link" size="middle">更改</a-button>
+              <a-button type="link" size="middle" @click="onClick">更改</a-button>
             </div>
             <a-checkbox
               :checked="state.SystemModule.defaultLocation"
@@ -140,6 +140,21 @@ const updateValue = (key: keyof SystemModuleState, value: any) => {
     key,
     value
   });
+};
+
+const onClick = () => {
+  window.api
+    .showOpenDialog({
+      properties: ["openDirectory"]
+    })
+    .then((res) => {
+      if (res.filePaths.length) {
+        commit("SystemModule/updateByKey", {
+          key: "downloadLocation",
+          value: res.filePaths[0]
+        });
+      }
+    });
 };
 </script>
 

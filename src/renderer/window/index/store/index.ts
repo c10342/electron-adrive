@@ -1,8 +1,6 @@
 import { createStore } from "vuex";
 import modules from "./modules";
 import { GlobalStoreData, UseStore } from "../types/store";
-// import { logError } from "@share/log";
-// import { SystemModuleState } from "@share/type";
 
 export const store: UseStore = createStore<GlobalStoreData>({
   modules
