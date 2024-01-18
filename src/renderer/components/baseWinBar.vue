@@ -79,7 +79,7 @@ const ondblclick = () => {
       cursor: pointer;
       color: #25262b;
       &:hover {
-        background-color: #dbdeed;
+        background-color: #d8d8db;
       }
       &.bar-icon-close {
         &:hover {
