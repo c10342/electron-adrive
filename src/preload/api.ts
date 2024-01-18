@@ -34,7 +34,7 @@ const api = {
   [JsbridgeEnum.MaximizeWin]() {
     ipcRenderer.send(JsbridgeEnum.MaximizeWin);
   },
-  // 最小化窗口
+  // 还原窗口
   [JsbridgeEnum.UnmaximizeWin]() {
     ipcRenderer.send(JsbridgeEnum.UnmaximizeWin);
   },
