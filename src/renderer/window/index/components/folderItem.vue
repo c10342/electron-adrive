@@ -17,9 +17,22 @@ const menus: BaseMenuItem[] = [
   {
     label: "快传",
     type: BaseMenuType.Item,
-    key: "1"
+    key: "1",
+    onClick() {
+      // a.b;
+    }
   },
-  { label: "下载", type: BaseMenuType.Item, key: "2" },
+  {
+    label: "下载",
+    type: BaseMenuType.Item,
+    key: "2",
+    onClick() {
+      console.log("log");
+      console.info("info");
+      console.error("error");
+      console.warn("warn");
+    }
+  },
   { label: "收藏", type: BaseMenuType.Item, key: "3" },
   { type: BaseMenuType.Line, key: "4" },
   { label: "重命名", type: BaseMenuType.Item, key: "5" },

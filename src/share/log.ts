@@ -1,6 +1,10 @@
-export const logError = (...arrgs: any) => {
-  console.error(...arrgs);
+import log from "electron-log";
+export const logError = (...args: any) => {
+  log.error(...args);
 };
-export const logInfo = (...arrgs: any) => {
-  console.log(...arrgs);
+export const logWarn = (...args: any) => {
+  log.warn(...args);
+};
+export const logInfo = (...args: any) => {
+  log.info(...args);
 };

@@ -4,6 +4,7 @@ import { join } from "path";
 import { is } from "@electron-toolkit/utils";
 import { GlobalEventEnum } from "@share/event";
 import { Logo } from "@share/resources";
+import { logError, logWarn } from "@share/log";
 
 interface WindowOptions extends BrowserWindowConstructorOptions {
   preload?: string;
@@ -47,6 +48,19 @@ const createWindow = (winName: string, options?: WindowOptions) => {
     shell.openExternal(details.url);
     return { action: "deny" };
   });
+  win.webContents.on("console-message", (_event, level, message, line, sourceId) => {
+    //  {} 1 log 23 http://localhost:5173/window/index/components/folderItem.vue
+    //  {} 1 info 24 http://localhost:5173/window/index/components/folderItem.vue
+    //  {} 3 error 25 http://localhost:5173/window/index/components/folderItem.vue
+    //  {} 2 warn 26 http://localhost:5173/window/index/components/folderItem.vue
+    // 监听异常错误
+    // 在浏览器中，如果遇见未知错误或者异常错误，都会在控制台中有输出
+    if (level === 3) {
+      logError("render-error", message, line, sourceId);
+    } else if (level === 2) {
+      logWarn("render-warn", message, line, sourceId);
+    }
+  });
   win.on("maximize", () => {
     win.webContents.send(GlobalEventEnum.Maximize);
   });
@@ -56,7 +70,6 @@ const createWindow = (winName: string, options?: WindowOptions) => {
   win.on("unmaximize", () => {
     win.webContents.send(GlobalEventEnum.Unmaximize);
   });
-
   const devIp = process.env["ELECTRON_RENDERER_URL"];
   if (is.dev && devIp) {
     win.loadURL(`${devIp}/window/${winName}/index.html`);

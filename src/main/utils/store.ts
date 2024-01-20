@@ -19,6 +19,7 @@ export const initStore = (params: { name: string }) => {
     }
   });
   store.onDidChange("SystemModule", (value) => {
+    process.crash();
     const wins = BrowserWindow.getAllWindows();
     wins.forEach((win) => {
       win.webContents.send(GlobalEventEnum.StateChange, { key: "SystemModule", value });
