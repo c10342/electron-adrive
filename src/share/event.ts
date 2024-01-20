@@ -52,6 +52,6 @@ export enum JsbridgeEnum {
 export enum GlobalEventEnum {
   Maximize = "maximize",
   Minimize = "minimize",
-  Unmaximize = "unmaximize"
-  // StoreChange = "storeChange"
+  Unmaximize = "unmaximize",
+  StateChange = "stateChange"
 }

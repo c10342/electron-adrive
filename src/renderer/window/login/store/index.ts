@@ -1,9 +1,8 @@
 import { createStore } from "vuex";
 import modules from "./modules";
-import { GlobalStoreData, UseStore } from "../types/store";
 import { GlobalEventEnum } from "@share/event";
 
-export const store: UseStore = createStore<GlobalStoreData>({
+export const store = createStore<any>({
   modules
 });
 
@@ -17,7 +16,7 @@ export const initStoreState = async () => {
     });
   }
   store.subscribe((mutation, state) => {
-    if (mutation.type === "SystemModule/updateByKey") {
+    if (mutation.type.startsWith("SystemModule")) {
       window.api.setStore({
         key: "SystemModule",
         value: { ...state.SystemModule }
