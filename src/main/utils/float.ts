@@ -1,3 +1,4 @@
+// 悬浮窗口
 import { join } from "path";
 import createWindow from "./createWindow";
 import { screen } from "electron";

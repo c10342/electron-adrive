@@ -1,3 +1,4 @@
+// 主/渲染进程通信
 import { JsbridgeEnum } from "@share/event";
 import {
   SetWinPositionParams,

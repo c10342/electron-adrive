@@ -1,3 +1,4 @@
+// 数据状态持久化
 import { GlobalEventEnum } from "@share/event";
 import { getSystemModuleState } from "@share/helper";
 import { SystemModuleState } from "@share/type";
