@@ -17,6 +17,8 @@ const initFloat = () => {
     // 设置透明窗口
     transparent: true
   });
+
+  win.setSkipTaskbar(true);
   //通过获取用户屏幕的宽高来设置悬浮球的初始位置
   const left = screen.getPrimaryDisplay().workAreaSize.width - 400;
   //   const top = screen.getPrimaryDisplay().workAreaSize.height - 400;
